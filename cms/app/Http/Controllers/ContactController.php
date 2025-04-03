@@ -12,12 +12,25 @@ class ContactController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $contacts = auth()->user()->contacts()->orderBy('name')->get();
-        return view('contacts.index', compact('contacts'));
-    }
-
+        $search = $request->input('search');
+        
+        $contacts = auth()->user()->contacts()
+            ->when($search, function($query, $search) {
+                return $query->where(function($q) use ($search) {
+                    $q->where('name', 'like', "%{$search}%")
+                      ->orWhere('email', 'like', "%{$search}%")
+                      ->orWhere('phone', 'like', "%{$search}%")
+                      ->orWhere('address', 'like', "%{$search}%")
+                      ->orWhere('notes', 'like', "%{$search}%");
+                });
+            })
+            ->orderBy('name')
+            ->get();
+            
+        return view('contacts.index', compact('contacts', 'search'));
+        }
     public function create()
     {
         return view('contacts.create');
@@ -77,4 +90,7 @@ class ContactController extends Controller
         return redirect()->route('contacts.index')
             ->with('success', 'Contact deleted successfully!');
     }
+
+
+    
 }

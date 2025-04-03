@@ -1,3 +1,5 @@
+{{-- Update your resources/views/contacts/index.blade.php file --}}
+
 <x-app-layout>
     <x-slot name="header">
         <div class="flex justify-between items-center">
@@ -17,6 +19,25 @@
                     <p>{{ session('success') }}</p>
                 </div>
             @endif
+
+            {{-- Add search form --}}
+            <div class="mb-6">
+                <form action="{{ route('contacts.index') }}" method="GET" class="flex">
+                    <div class="w-full">
+                        <input type="text" name="search" placeholder="Search contacts..." 
+                            class="w-full px-4 py-2 border rounded-l focus:outline-none" 
+                            value="{{ $search ?? '' }}">
+                    </div>
+                    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-r">
+                        Search
+                    </button>
+                    @if(isset($search) && $search)
+                        <a href="{{ route('contacts.index') }}" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r ml-2">
+                            Clear
+                        </a>
+                    @endif
+                </form>
+            </div>
 
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
@@ -54,7 +75,13 @@
                             </table>
                         </div>
                     @else
-                        <p class="text-gray-500">No contacts found. Add your first contact!</p>
+                        <p class="text-gray-500">
+                            @if(isset($search) && $search)
+                                No contacts found matching "{{ $search }}". <a href="{{ route('contacts.index') }}" class="text-blue-500">View all contacts</a>
+                            @else
+                                No contacts found. Add your first contact!
+                            @endif
+                        </p>
                     @endif
                 </div>
             </div>
