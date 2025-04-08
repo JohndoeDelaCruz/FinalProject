@@ -11,13 +11,17 @@
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <div class="hidden space-x-4 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                        <button class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300 ease-in-out transform hover:scale-105">
+                            <i class="fas fa-tachometer-alt mr-2"></i>{{ __('Dashboard') }}
+                        </button>
                     </x-nav-link>
                     
                     <x-nav-link :href="route('contacts.index')" :active="request()->routeIs('contacts.*')">
-                        {{ __('Contacts') }}
+                        <button class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition duration-300 ease-in-out transform hover:scale-105">
+                            <i class="fas fa-address-book mr-2"></i>{{ __('Contacts') }}
+                        </button>
                     </x-nav-link>
                 </div>
             </div>

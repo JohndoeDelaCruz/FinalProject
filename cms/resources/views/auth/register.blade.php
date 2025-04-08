@@ -20,7 +20,7 @@
                     type="text" 
                     name="name" 
                     :value="old('name')" 
-                    placeholder="John Doe"
+                    placeholder="name"
                     required autofocus autocomplete="name" />
             </div>
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
