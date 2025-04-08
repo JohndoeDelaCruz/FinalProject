@@ -1,0 +1,7 @@
+{
+  "name": "laravel-on-vercel",
+  "description": "Laravel deployment on Vercel",
+  "require": {
+    "php": "^8.1"
+  }
+} 

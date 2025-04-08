@@ -1,4 +1,9 @@
 <?php
+// Set the base path for the Laravel application
+$basePath = realpath(__DIR__ . '/../cms');
 
-// Forward Vercel requests to normal index.php
-require __DIR__ . '/../cms/public/index.php'; 
+// Change current directory to the Laravel root
+chdir($basePath);
+
+// Load the Laravel application
+require $basePath . '/public/index.php'; 
