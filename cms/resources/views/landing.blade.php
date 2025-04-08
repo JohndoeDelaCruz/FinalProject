@@ -19,8 +19,11 @@
         <header class="bg-gradient-to-r from-blue-600 to-blue-700 text-white">
             <div class="relative z-10">
                 <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-                    <div class="text-2xl font-bold">
-                        CMS
+                    <div class="flex items-center">
+                        <div class="h-10 w-10 bg-blue-600 rounded-full flex items-center justify-center">
+                            <span class="text-white font-bold">CMS</span>
+                        </div>
+                        <span class="ml-2 font-bold text-xl text-white">Contact Management System</span>
                     </div>
                     <div class="hidden md:flex space-x-4">
                         @if (Route::has('login'))
