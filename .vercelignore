@@ -1,0 +1,6 @@
+/cms/vendor
+/cms/node_modules
+/cms/.git
+/cms/storage/*.key
+.env
+.env.backup 
