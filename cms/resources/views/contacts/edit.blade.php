@@ -34,7 +34,7 @@
                             <div class="md:col-span-2">
                                 <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name <span class="text-red-500">*</span></label>
                                 <input type="text" name="name" id="name" 
-                                    class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm @error('name') border-red-300 @enderror" 
+                                    class="block w-full rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm {{ $errors->has('name') ? 'border-red-300' : 'border-gray-300' }}" 
                                     required value="{{ old('name', $contact->name) }}" placeholder="Enter contact name">
                                 @error('name')
                                     <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -52,7 +52,7 @@
                                         </svg>
                                     </div>
                                     <input type="email" name="email" id="email" 
-                                        class="block w-full pl-10 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm @error('email') border-red-300 @enderror" 
+                                        class="block w-full pl-10 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm {{ $errors->has('email') ? 'border-red-300' : 'border-gray-300' }}" 
                                         value="{{ old('email', $contact->email) }}" placeholder="email@example.com">
                                 </div>
                                 @error('email')
@@ -70,7 +70,7 @@
                                         </svg>
                                     </div>
                                     <input type="text" name="phone" id="phone" 
-                                        class="block w-full pl-10 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm @error('phone') border-red-300 @enderror" 
+                                        class="block w-full pl-10 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm {{ $errors->has('phone') ? 'border-red-300' : 'border-gray-300' }}" 
                                         value="{{ old('phone', $contact->phone) }}" placeholder="(123) 456-7890">
                                 </div>
                                 @error('phone')
@@ -88,7 +88,7 @@
                                         </svg>
                                     </div>
                                     <input type="text" name="address" id="address" 
-                                        class="block w-full pl-10 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm @error('address') border-red-300 @enderror" 
+                                        class="block w-full pl-10 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm {{ $errors->has('address') ? 'border-red-300' : 'border-gray-300' }}" 
                                         value="{{ old('address', $contact->address) }}" placeholder="Enter address">
                                 </div>
                                 @error('address')
@@ -100,7 +100,7 @@
                             <div class="md:col-span-2">
                                 <label for="notes" class="block text-sm font-medium text-gray-700 mb-1">Notes</label>
                                 <textarea name="notes" id="notes" rows="4" 
-                                    class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm @error('notes') border-red-300 @enderror"
+                                    class="block w-full rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm {{ $errors->has('notes') ? 'border-red-300' : 'border-gray-300' }}"
                                     placeholder="Add any additional information about this contact">{{ old('notes', $contact->notes) }}</textarea>
                                 @error('notes')
                                     <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
